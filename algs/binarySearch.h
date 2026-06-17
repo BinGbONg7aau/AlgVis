@@ -1,10 +1,9 @@
 #ifndef BINARYSEARCH_H
 #define BINARYSEARCH_H
 
-void binarySearch(void);
+void binarySearch();
+static int _binarySearch(int *array, int length);
 
 #endif
 
 #include <stdio.h>
-#include <time.h>
-#include <stdlib.h>

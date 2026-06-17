@@ -3,16 +3,18 @@
 int main(){
     printf("\nHello this is AlgVis, a algorithm visualisation tool\n");
 
-    printf("Press bs for Binary Search\n");
+    printf("Press bs for Binary Search, ls for Linear Search\n");
 
-    char inAlg[5];
+    char input[5];
 
-    scanf("%4s", inAlg);
+    scanf("%4s", input);
 
-    if (!strcmp("bs", inAlg))
-    {
+    if (!strcmp("bs", input)) {
         binarySearch();
+    } else if (!strcmp("ls", input)){
+        linearSearch();
     }
+    
 
     return 0;
 }
