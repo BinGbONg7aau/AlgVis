@@ -1,17 +1,17 @@
 #include "helperFunctions.h"
 
 
-int* generateArray(int length){
+int* generateArray(int length) {
     return (int *)calloc(length, sizeof(int));
 }
 
-void populateArrayRandomWithDuplicates(int* array, int length){
+void populateArrayRandomWithDuplicates(int* array, int length) {
     for (int i = 0; i < length; i++) {
         array[i] = rand() % (101);
     }
 }
 
-void populateArrayRandomWithoutDuplicates(int* array, int length){
+void populateArrayRandomWithoutDuplicates(int* array, int length) {
      int used[101] = {0};
 
     for (int i = 0; i < length; i++) {
@@ -26,7 +26,7 @@ void populateArrayRandomWithoutDuplicates(int* array, int length){
     }
 }
 
-void promptArrayLength(int *length){
+void promptArrayLength(int *length) {
     printf("Input array length: \n");
     while (*length < 0 || *length > 100) {
         printf("length must be >= 0 and <= 100\n");
@@ -34,7 +34,7 @@ void promptArrayLength(int *length){
     }
 }
 
-void promptArrayGen(int length, int* array){
+void promptArrayGen(int length, int* array) {
     char valueGenOpt;
     printf("Press m to generate manuel values, d to generate random values with possible duplicates, w to generate random values without duplicates\n");
     scanf(" %1c", &valueGenOpt);
@@ -46,4 +46,16 @@ void promptArrayGen(int length, int* array){
     } else if(valueGenOpt == 'w') {
         populateArrayRandomWithoutDuplicates(array, length);
     }
+}
+
+int comp(const void* a, const void* b) {
+    return (*(int*)a - *(int*)b);
+}
+
+void printArray(int *array, int length) {
+    printf("[%d, ", array[0]);
+    for (int i = 1; i < length - 1; i++) {
+        printf("%d, ", array[i]);
+    }
+    printf("%d]\n\n", array[length-1]);
 }

@@ -10,14 +10,16 @@ void binarySearch(){
     promptArrayLength(&length);
     array = generateArray(length);
 
-    //TODO sort array
     populateArrayRandomWithoutDuplicates(array, length);
 
-    printf("Generated array: \n[");
-    for (int i = 0; i < length - 1; i++) {
-        printf("%d, ", array[i]);
-    }
-    printf("%d]\n", array[length-1]);
+    printf("Generated array: \n");
+    printArray(array, length);
+
+    printf("Sorting Array for Binary Search...\n");
+    qsort(array, length, sizeof(int), comp);
+
+    printf("Sorted array: \n");
+    printArray(array, length);
 
     _binarySearch(array, length);
 
@@ -35,7 +37,8 @@ static int _binarySearch(int *array, int length){
 
     while (low <= high) {
         int mid = low + (high - low) / 2;
-        printf("Search step %d: \t low: %d, high: %d, mid: %d\n", i, low, high, mid);
+        printf("Search step %d: \t low: %d, mid: %d, high: %d\n", i+1, low, mid, high);
+        printBinArray(array, length, low, mid, high);
         if (array[mid] == value) {
             printf("Value found, returning index: %d\n", mid);
             return mid;
@@ -43,14 +46,25 @@ static int _binarySearch(int *array, int length){
         
         if (array[mid] < value) {
             low = mid + 1;
-        }
-        else {
+        } else {
             high = mid - 1;
         }
-        
         i++;
     }
 
     printf("Value not found, returning -1\n");
     return -1;
+}
+
+void printBinArray(int *array, int length, int low, int mid, int high) {
+    low == 0 ? printf("[_%d_, ", array[0])  : printf("[%d, ", array[0]);
+
+    for (int i = 1; i < length - 1; i++) {
+        if (i == low || i == mid || i == high) {
+            printf("_%d_, ", array[i]);
+        } else {
+            printf("%d, ", array[i]);
+        }
+    }
+    high == length -1 ? printf("_%d_]\n\n", array[length-1]) : printf("%d]\n\n", array[length-1]);;
 }
