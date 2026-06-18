@@ -39,8 +39,8 @@ static int _linearSearch(int *array, int length)  {
 
 static void printLinArray(int *array, int length, int index) {
     printf("[");
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < length-1; i++) {
         i == index ? printf("->%d<-, ", array[i]) : printf("%d, ", array[i]);
     }
-    printf("]\n\n");
+    printf("%d]\n\n", array[length-1]);
 }
