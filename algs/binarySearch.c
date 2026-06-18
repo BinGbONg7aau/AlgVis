@@ -57,14 +57,14 @@ static int _binarySearch(int *array, int length){
 }
 
 void printBinArray(int *array, int length, int low, int mid, int high) {
-    low == 0 ? printf("[_%d_, ", array[0])  : printf("[%d, ", array[0]);
+    low == 0 ? printf("[->%d<-, ", array[0])  : printf("[%d, ", array[0]);
 
     for (int i = 1; i < length - 1; i++) {
         if (i == low || i == mid || i == high) {
-            printf("_%d_, ", array[i]);
+            printf("->%d<-, ", array[i]);
         } else {
             printf("%d, ", array[i]);
         }
     }
-    high == length -1 ? printf("_%d_]\n\n", array[length-1]) : printf("%d]\n\n", array[length-1]);;
+    high == length -1 ? printf("->%d<-]\n\n", array[length-1]) : printf("%d]\n\n", array[length-1]);;
 }
