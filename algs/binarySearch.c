@@ -9,8 +9,7 @@ void binarySearch(){
 
     promptArrayLength(&length);
     array = generateArray(length);
-
-    populateArrayRandomWithoutDuplicates(array, length);
+    populateArrayRandom(array, length);
 
     printf("Generated array: \n");
     printArray(array, length);

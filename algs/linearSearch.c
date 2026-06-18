@@ -9,7 +9,6 @@ void linearSearch(){
 
     promptArrayLength(&length);
     array = generateArray(length);
-
     promptArrayGen(length, array);
 
     printf("Generated array: \n");
@@ -22,7 +21,6 @@ void linearSearch(){
 
 static int _linearSearch(int *array, int length)  {
     int value;
-    
     printf("Input value to search for: \n");
     scanf(" %3d", &value);
 

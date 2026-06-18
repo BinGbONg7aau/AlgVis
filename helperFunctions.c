@@ -1,17 +1,11 @@
 #include "helperFunctions.h"
 
-
 int* generateArray(int length) {
     return (int *)calloc(length, sizeof(int));
 }
 
-void populateArrayRandomWithDuplicates(int* array, int length) {
-    for (int i = 0; i < length; i++) {
-        array[i] = rand() % (101);
-    }
-}
-
-void populateArrayRandomWithoutDuplicates(int* array, int length) {
+//Populate an array with random values without duplicates
+void populateArrayRandom(int* array, int length) {
      int used[101] = {0};
 
     for (int i = 0; i < length; i++) {
@@ -36,15 +30,13 @@ void promptArrayLength(int *length) {
 
 void promptArrayGen(int length, int* array) {
     char valueGenOpt;
-    printf("Press m to generate manuel values, d to generate random values with possible duplicates, w to generate random values without duplicates\n");
+    printf("Press m to generate manuel values, w to generate random values without duplicates\n");
     scanf(" %1c", &valueGenOpt);
 
     if (valueGenOpt == 'm') {
-
-    } else if(valueGenOpt == 'd') {
-        populateArrayRandomWithDuplicates(array, length);    
+        //TODO   
     } else if(valueGenOpt == 'w') {
-        populateArrayRandomWithoutDuplicates(array, length);
+        populateArrayRandom(array, length);
     }
 }
 
