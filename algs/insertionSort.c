@@ -29,7 +29,7 @@ static void _insertionSort(int *array, int length) {
         of their current position */
         while (j >= 0 && array[j] > key) {
             printInsertionArray(array, length, key, j);
-            printf(" -- Index j: %d, comparing array[j]: %d with key: %d, moving key down\n", j, array[j], key);
+            printf(" -- Index j: %d, insert key: %d before array[j]: %d as %d < %d\n", j, key, array[j], key, array[j]);
             array[j + 1] = array[j];
             j = j - 1;
         }
