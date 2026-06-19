@@ -15,6 +15,8 @@ void insertionSort() {
     printArray(array, length);
 
     _insertionSort(array, length);
+
+    free(array);
 }
 
 static void _insertionSort(int *array, int length) {

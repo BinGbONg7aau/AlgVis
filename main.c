@@ -7,6 +7,13 @@ int main(){
     printf(" Type \"bs\" for Binary Search - O(log n)\n");
     printf(" Type \"ls\" for Linear Search - O(n)\n");
     printf(" Type \"is\" for Insertion Sort - O(n^2)\n");
+    printf(" Type \"ms\" for Merge Sort - O(n log n)\n");
+    //TODO
+    //HASHMAP
+    //BINARY TREE
+    //BUBBLE SORT
+    //QUICK SORT
+    //HEAP SORT
 
     char input[5];
 
@@ -18,6 +25,8 @@ int main(){
         linearSearch();
     } else if (!strcmp("is", input)){
         insertionSort();
+    } else if (!strcmp("ms", input)){
+        mergeSort();
     } else {
         printf("Command not recognised, please try again\n");
     }

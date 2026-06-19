@@ -42,5 +42,5 @@ static void printLinArray(int *array, int length, int index) {
     for (int i = 0; i < length-1; i++) {
         i == index ? printf("->%d<-, ", array[i]) : printf("%d, ", array[i]);
     }
-    printf("%d]\n\n", array[length-1]);
+    index == length-1 ? printf("->%d<-]\n\n", array[length-1]) : printf("%d]\n\n", array[length-1]);
 }
