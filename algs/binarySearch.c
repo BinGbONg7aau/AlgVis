@@ -1,6 +1,8 @@
 #include "binarySearch.h"
 #include "../helperFunctions.h"
 
+static int _binarySearch(int *array, int length);
+
 void binarySearch(){
     int length = -1;
     int *array;

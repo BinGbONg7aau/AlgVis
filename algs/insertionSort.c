@@ -1,6 +1,9 @@
 #include "insertionSort.h"
 #include "../helperFunctions.h"
 
+static void _insertionSort(int *array, int length);
+static void printInsertionArray(int *array, int length, int key, int j);
+
 void insertionSort() {
     int length = -1;
     int *array;

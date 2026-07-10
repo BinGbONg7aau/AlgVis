@@ -1,0 +1,63 @@
+#!/bin/sh
+set -e
+
+echo "Configuring AlgVis..."
+
+if [ -z "$CC" ]; then
+    if command -v gcc >/dev/null 2>&1; then
+        CC=gcc
+    elif command -v clang >/dev/null 2>&1; then
+        CC=clang
+    else
+        echo "Error: no C compiler found. Install gcc or clang." >&2
+        exit 1
+    fi
+fi
+
+echo "Using CC=$CC"
+
+if [ ! -f Makefile ]; then
+    cat > Makefile <<'EOF'
+# Makefile for AlgVis
+
+CC ?= gcc
+CFLAGS ?= -std=c11 -Wall -Wextra -Werror -g
+LDFLAGS ?=
+PREFIX ?= /usr/local
+TARGET ?= algvis
+
+SRCS = main.c helperFunctions.c \
+       algs/binarySearch.c algs/linearSearch.c \
+       algs/insertionSort.c algs/mergeSort.c
+
+OBJS = $(SRCS:.c=.o)
+
+.PHONY: all clean dist check distcheck install uninstall
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CC) $(LDFLAGS) -o $@ $^
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+check: all
+	@echo "No runtime tests configured."
+
+distcheck: all
+	@echo "No distcheck target configured."
+
+clean:
+	rm -f $(OBJS) $(TARGET)
+
+install: all
+	install -d $(DESTDIR)$(PREFIX)/bin
+	install -m 755 $(TARGET) $(DESTDIR)$(PREFIX)/bin/$(TARGET)
+
+uninstall:
+	rm -f $(DESTDIR)$(PREFIX)/bin/$(TARGET)
+EOF
+fi
+
+echo "Configuration complete."

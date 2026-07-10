@@ -1,6 +1,10 @@
 #include "mergeSort.h"
 #include "../helperFunctions.h"
 
+static void _mergeSort(int *array, int l, int r);
+static void _merge(int *array, int l, int m, int r);
+static void printMergeArray(int *array, int l, int r);
+
 void mergeSort() {
     int length = -1;
     int *array;

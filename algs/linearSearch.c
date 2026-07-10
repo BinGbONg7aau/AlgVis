@@ -1,6 +1,9 @@
 #include "linearSearch.h"
 #include "../helperFunctions.h"
 
+static int _linearSearch(int *array, int length);
+static void printLinArray(int *array, int length, int index);
+
 void linearSearch(){
     int length = -1;
     int *array;
