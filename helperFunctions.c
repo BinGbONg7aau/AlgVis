@@ -28,10 +28,16 @@ void populateArrayRandom(int* array, int length) {
 }
 
 void promptArrayLength(int *length) {
-    printf("Input array length: \n");
+    printf("Input array length:\n");
     while (*length < 0 || *length > 100) {
-        printf("length must be >= 0 and <= 100\n");
-        scanf(" %3d", length);
+        printf("Length must be between 0 and 100: ");
+
+        if (scanf("%3d", length) != 1) {
+            printf("Invalid input.\n");
+            while (getchar() != '\n');
+
+            *length = -1;
+        }
     }
 }
 
