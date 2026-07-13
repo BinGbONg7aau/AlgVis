@@ -11,6 +11,7 @@ The program currently includes demos for:
 - Insertion Sort
 - Merge Sort
 - Linked List
+- Hash Map
 
 ## Requirements
 
@@ -42,6 +43,7 @@ You will then be prompted to choose an algorithm by entering one of the supporte
 - `is` for Insertion Sort
 - `ms` for Merge Sort
 - `ll` for Linked List Demo
+- `hm` for Hash Map Demo
 
 ## Project Structure
 

@@ -6,6 +6,7 @@
 #include "algs/insertionSort.h"
 #include "algs/mergeSort.h"
 #include "algs/linkedList.h"
+#include "algs/hashMap.h"
 #include <stdio.h>
 #include <string.h>
 

@@ -8,7 +8,7 @@ TARGET ?= algvis
 
 SRCS = main.c helperFunctions.c \
        algs/binarySearch.c algs/linearSearch.c \
-       algs/insertionSort.c algs/mergeSort.c algs/linkedList.c
+       algs/insertionSort.c algs/mergeSort.c algs/linkedList.c algs/hashMap.c
 
 OBJS = $(SRCS:.c=.o)
 
