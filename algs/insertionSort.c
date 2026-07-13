@@ -2,7 +2,7 @@
 #include "../helperFunctions.h"
 
 static void _insertionSort(int *array, int length);
-static void printInsertionArray(int *array, int length, int key, int j);
+static void printInsertionArray(int *array, int length, int insertedIndex, int j);
 
 void insertionSort() {
     int length = -1;
@@ -14,48 +14,66 @@ void insertionSort() {
     array = generateArray(length);
     populateArrayRandom(array, length);
 
-    printf("Generated array: \n");
+    printf("Generated array:\n");
     printArray(array, length);
+    printf("\n");
 
     _insertionSort(array, length);
+
+    printf("Sorted array:\n");
+    printArray(array, length);
 
     free(array);
 }
 
 static void _insertionSort(int *array, int length) {
-    for (int i = 1; i < length; ++i) {
+
+    for (int i = 1; i < length; i++) {
         int key = array[i];
         int j = i - 1;
 
-        printf("Insertion Step %d: \t key: %d\n", i, key);
-        
-        /* Move elements of array[0..i-1], that are
-        greater than key, to one position ahead
-        of their current position */
+        printf("=========================================\n");
+        printf("Iteration %d\n", i);
+        printf("Key = %d\n\n", key);
+
         while (j >= 0 && array[j] > key) {
-            printInsertionArray(array, length, key, j);
-            printf(" -- Index j: %d, insert key: %d before array[j]: %d as %d < %d\n", j, key, array[j], key, array[j]);
+
             array[j + 1] = array[j];
-            j = j - 1;
+
+            printInsertionArray(array, length, NO_INDEX, j);
+            printf("Shift %d one position to the right because %d < %d\n\n",
+                array[j], key, array[j]);
+
+            j--;
         }
+
         array[j + 1] = key;
-        printInsertionArray(array, length, key, j);
-        printf(" -- Index j: %d, inserting key: %d on index j+1: %d \n", j, key, j+1);
-        printf("\n");
+
+        printInsertionArray(array, length, j + 1, NO_INDEX);
+        printf("Insert key %d at index %d\n\n", key, j + 1);
     }
 }
 
-void printInsertionArray(int *array, int length, int key, int j) {
-    printf("[");
-    for (int i = 0; i < length-1; i++) {
-        if (array[i] == key) {
-            printf("_%d_, ", array[i]);
-        } else if (i == j) {
-            printf(">%d<, ", array[i]);
-        } else {
-            printf("%d, ", array[i]);
-        }
+static void printInsertionArray(int *array,
+                                int length,
+                                int insertedIndex,
+                                int j)
+{
+    printf("Index:");
+
+    for (int i = 0; i < length; i++) {
+        printf("%5d", i);
     }
 
-    array[length-1]==key ? printf("_%d_]", array[length-1]) : printf("%d]", array[length-1]);
+    printf("\nArray:");
+
+    for (int i = 0; i < length; i++) {
+        if (i == insertedIndex){
+            printf("  _%2d", array[i]);
+        } else if (i == j){
+            printf("  >%2d", array[i]);
+        } else
+            printf("%5d", array[i]);
+    }
+    printf("\n");
 }
