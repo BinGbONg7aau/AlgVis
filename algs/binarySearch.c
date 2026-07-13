@@ -35,10 +35,24 @@ static int _binarySearch(int *array, int length){
 
     printf("Input value to search for: \n");
     scanf(" %3d", &value);
+    printf("\n");
 
     while (low <= high) {
         int mid = low + (high - low) / 2;
-        printf("Search step %d: \t low: %d, mid: %d, high: %d\n", i+1, low, mid, high);
+        printf("Step %d | indeces: low=%d mid=%d high=%d\n", i + 1, low, mid, high);
+        if (array[mid] == value) {
+            printf("Compare %d with %d -> FOUND\n", value, array[mid]);
+            printBinArray(array, length, low, mid, high);
+            printf("Value found at index %d\n", mid);
+            return mid;
+        }
+
+        printf("Compare %d with %d -> go %s\n",
+            value,
+            array[mid],
+            value > array[mid] ? "right" : "left");
+
+        //printf("Search step %d: \t low: %d, mid: %d, high: %d\n", i+1, low, mid, high);
         printBinArray(array, length, low, mid, high);
         if (array[mid] == value) {
             printf("Value found, returning index: %d\n", mid);
@@ -57,15 +71,36 @@ static int _binarySearch(int *array, int length){
     return -1;
 }
 
-void printBinArray(int *array, int length, int low, int mid, int high) {
-    low == 0 ? printf("[->%d<-, ", array[0])  : printf("[%d, ", array[0]);
+void printBinArray(int *array, int length, int low, int mid, int high)
+{
+    printf("Index: ");
 
-    for (int i = 1; i < length - 1; i++) {
-        if (i == low || i == mid || i == high) {
-            printf("->%d<-, ", array[i]);
-        } else {
-            printf("%d, ", array[i]);
-        }
+    for (int i = 0; i < length; i++)
+        printf("%4d", i);
+
+    printf("\nArray: ");
+
+    for (int i = 0; i < length; i++)
+        printf("%4d", array[i]);
+
+    printf("\n      ");
+
+    for (int i = 0; i < length; i++) {
+        if (i == low && i == mid && i == high)
+            printf("%4s", "LMH");
+        else if (i == low && i == mid)
+            printf("%4s", "LM");
+        else if (i == mid && i == high)
+            printf("%4s", "MH");
+        else if (i == low)
+            printf("%4s", "L");
+        else if (i == mid)
+            printf("%4s", "M");
+        else if (i == high)
+            printf("%4s", "H");
+        else
+            printf("%4s", "");
     }
-    high == length -1 ? printf("->%d<-]\n\n", array[length-1]) : printf("%d]\n\n", array[length-1]);;
+
+    printf("\n\n");
 }
