@@ -8,6 +8,7 @@ int main(){
     printf(" Type \"ls\" for Linear Search - O(n)\n");
     printf(" Type \"is\" for Insertion Sort - O(n^2)\n");
     printf(" Type \"ms\" for Merge Sort - O(n log n)\n");
+    printf(" Type \"ll\" for Linked List Demo\n");
     //TODO
     //HASHMAP
     //BINARY TREE
@@ -27,6 +28,8 @@ int main(){
         insertionSort();
     } else if (!strcmp("ms", input)){
         mergeSort();
+    } else if (!strcmp("ll", input)){
+        linkedList();
     } else {
         printf("Command not recognised, please try again\n");
     }

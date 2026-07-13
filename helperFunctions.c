@@ -1,7 +1,14 @@
 #include "helperFunctions.h"
 
-int* generateArray(int length) {
-    return (int *)calloc(length, sizeof(int));
+int *generateArray(int length) {
+    int *array = calloc(length, sizeof(int));
+
+    if (array == NULL) {
+        fprintf(stderr, "Error: Failed to allocate memory for array of length %d.\n", length);
+        exit(EXIT_FAILURE);
+    }
+
+    return array;
 }
 
 //Populate an array with random values without duplicates
