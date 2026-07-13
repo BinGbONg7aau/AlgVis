@@ -12,7 +12,7 @@ void linearSearch(){
 
     promptArrayLength(&length);
     array = generateArray(length);
-    promptArrayGen(length, array);
+    populateArrayRandom(array, length);
 
     printf("Generated array: \n");
     printArray(array, length);
@@ -26,10 +26,12 @@ static int _linearSearch(int *array, int length)  {
     int value;
     printf("Input value to search for: \n");
     scanf(" %3d", &value);
+    printf("\n");
 
     for (int i = 0; i < length; i++) {    
-        printf("Search step %d:\tIndex %d and Value %d\n", i+1, i, array[i]);
+        printf("Search step %d\n", i+1);
         printLinArray(array, length, i);
+
         if (value == array[i]) {
             printf("Value %d found, returning index %d\n", value, i);
             return i;
@@ -41,9 +43,16 @@ static int _linearSearch(int *array, int length)  {
 }
 
 static void printLinArray(int *array, int length, int index) {
-    printf("[");
-    for (int i = 0; i < length-1; i++) {
-        i == index ? printf("->%d<-, ", array[i]) : printf("%d, ", array[i]);
+    printf("Index:");
+
+    for (int i = 0; i < length; i++) {
+        printf("%5d", i);
     }
-    index == length-1 ? printf("->%d<-]\n\n", array[length-1]) : printf("%d]\n\n", array[length-1]);
+
+    printf("\nArray:");
+    for (int i = 0; i < length; i++) {
+        i == index ? printf("  >%2d", array[i]) : printf("%5d", array[i]);
+    }
+
+    printf("\n\n");
 }
