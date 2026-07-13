@@ -8,6 +8,7 @@ int main(){
     printf(" Type \"ls\" for Linear Search - O(n)\n");
     printf(" Type \"is\" for Insertion Sort - O(n^2)\n");
     printf(" Type \"ms\" for Merge Sort - O(n log n)\n");
+    printf(" Type \"qs\" for Quick Sort O(n)\n");
     printf(" Type \"ll\" for Linked List Demo\n");
     printf(" Type \"hm\" for Hash Map Demo\n");
     //TODO
@@ -33,6 +34,8 @@ int main(){
         linkedList();
     } else if (!strcmp("hm", input)){
         hashMap();
+    } else if (!strcmp("qs", input)){
+        quickSort();
     } else {
         printf("Command not recognised, please try again\n");
     }

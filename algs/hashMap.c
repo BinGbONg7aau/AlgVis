@@ -10,7 +10,7 @@ typedef struct Entry {
 } Entry;
 
 typedef struct HashMap {
-    Entry **table;
+    Entry **table; //An array of bucket pointers
     unsigned int capacity;
     unsigned int size;
 } HashMap;
